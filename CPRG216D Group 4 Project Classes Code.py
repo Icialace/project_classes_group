@@ -313,8 +313,6 @@ class Patient:
 
 # Management Class and Functions
 class Management:
-  #DisplayMenu function shows the initial display with the options of doctors
-  #laboratories, and patients, with an option to stop the function.
   def DisplayMenu():
     choice = input("Welcome to Alberta Hospital (AH) Management System.\n\
     please select from the following options, or select 0 to stop:\n\
@@ -324,11 +322,6 @@ class Management:
     4 - Patients\n")
     return choice
   
-  """
-  The doctorMenu function displays options of displaying a doctors list,
-  the ability to search for a doctor by ID, to search for a doctor by name, to add
-  a new doctor, to edit an existing doctor, and to return back to the main menu.
-  """
   def DoctorMenu():
     choose_doctor = input("Doctors Menu\n\
     1 - Display Doctors List\n\
@@ -339,10 +332,6 @@ class Management:
     6 - Back to the Main Menu\n")
     return choose_doctor
 
-  """
-  The labmenu function displays options for displaying the list of laboratory,
-  the ability to add a new laboratory, and the option to return back to the main menu.
-  """
   def LabMenu():
     choose_lab = input("Laboratory Menu\n\
     1 - Display Laboratories List\n\
@@ -350,10 +339,6 @@ class Management:
     3 - Back to the Main Menu\n")
     return choose_lab
 
-  """
-  The facilitymenu function displays options for displaying information for the list of facilities,
-  the ability to add a new facility, and the option to return back to the main menu.
-  """
   def FacilityMenu():
     choose_facility = input("Facilities Menu\n\
     1 - Display Facilities List\n\
@@ -361,11 +346,6 @@ class Management:
     3 - Back to the Main Menu\n")
     return choose_facility
 
-  """
-  The patientmenu function displays options for displaying a list of patients and their details, the
-  ability to search for a patient by their ID, to add a new patient, to edit an existing patient's details
-  and the option to return back to the main menu.
-  """
   def PatientMenu():
     choose_patient = input("Patients Menu\n\
     1 - Display Patients List\n\
@@ -375,8 +355,6 @@ class Management:
     5 - Back to main Menu\n")
     return choose_patient
 
-#The portion of code here is to only allow numerical inputs to navigate the menu.
-#Invalid options will require the user to enter a value again until it is a numerical value in range.
 choice = "x"
 while choice != "0":
   choice = Management.DisplayMenu()
