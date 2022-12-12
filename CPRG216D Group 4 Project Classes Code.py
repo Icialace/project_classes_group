@@ -140,15 +140,17 @@ class Doctor:
     with open("/content/doctors.txt", mode = "a") as doctor_open:
       doctor_open.write(new_doctor_info)
 
-# Facility Class and Functions
+# Facility Class and Functions 
 class Facility:
+  # addFacility allows user to input Facility name to add facility
   def addFacility():
     added_facility = input("Enter Facility Name: ")
     added_facility =  "\n" + added_facility
     with open("/content/facilities.txt", mode = "a") as facilities_write:
       facilities_write.write(added_facility)
     print("\n")
-  
+    
+  # displayFacilities opens the txt file and prints the data in the txt file
   def displayFacilities():
     with open("/content/facilities.txt", mode = "r") as facilities_open:
       facilities_raw_data = facilities_open.readlines()
@@ -157,7 +159,8 @@ class Facility:
         facilities_list = line.split("\n")
         facilities_data.append(facilities_list)
       print(tabulate(facilities_data, headers = "firstrow"), "\n")
-  
+      
+  # writeListOfFacilitiesToFile writes a list of facilities to another file
   def writeListOfFacilitiesToFile(list_of_facilities):
     facility_write_list = []
     for line in list_of_facilities:
@@ -171,10 +174,12 @@ class Facility:
 
 # Laboratory Class and Functions
 class Laboratory:
+  # addLabToFile opens lab txt file
   def addLabToFile(new_lab_info):
     with open("/content/laboratories.txt", mode = "a") as lab_open:
       lab_open.write(new_lab_info)
   
+  # writeListOfLabsToFile writes a list of labs to another file
   def writeListOfLabsToFile(list_of_labs):
     lab_write_list = []
     for line in list_of_labs:
@@ -185,7 +190,8 @@ class Laboratory:
       lab_write.write("\n")
       for line in lab_write_list:
         lab_write.write(line)
-  
+        
+  # displayLabsList displays the the data in a formatted list
   def displayLabsList(lab_raw_data):
     lab_data = []
     for line in lab_raw_data:
@@ -193,23 +199,26 @@ class Laboratory:
       lab_data.append(lab_list)
     print(tabulate(lab_data, headers = "firstrow"), "\n")
   
+  # formatLabInfo formats a new input to prepare to write to a file
   def formatLabInfo(new_lab):
     new_lab_info = '_'.join(new_lab)
     new_lab_info = "\n" + new_lab_info
     return new_lab_info
   
+  # enterLabInfo allows a user to input data for a new lab.
   def enterLabInfo():
     new_lab = []
     new_lab.append(input("Lab name: "))
     new_lab.append("$" + input("Lab cost(e.g., for $800, enter 800): "))
     return new_lab
   
+  # readLabFile opens the txt file and reads it 
   def readLabFile():
     with open("/content/laboratories.txt", mode = "r") as lab_open:
       lab_raw_data = lab_open.readlines()
     return lab_raw_data
 
-# Patient Class and Functions
+# Patient Class and Functions 
 class Patient: 
   def formatPatientInfo(new_patient):
     new_patient_info = '_'.join(new_patient)
@@ -304,8 +313,6 @@ class Patient:
 
 # Management Class and Functions
 class Management:
-  #DisplayMenu function shows the initial display with the options of doctors
-  #laboratories, and patients, with an option to stop the function.
   def DisplayMenu():
     choice = input("Welcome to Alberta Hospital (AH) Management System.\n\
     please select from the following options, or select 0 to stop:\n\
@@ -315,11 +322,6 @@ class Management:
     4 - Patients\n")
     return choice
   
-  """
-  The doctorMenu function displays options of displaying a doctors list,
-  the ability to search for a doctor by ID, to search for a doctor by name, to add
-  a new doctor, to edit an existing doctor, and to return back to the main menu.
-  """
   def DoctorMenu():
     choose_doctor = input("Doctors Menu\n\
     1 - Display Doctors List\n\
@@ -330,10 +332,6 @@ class Management:
     6 - Back to the Main Menu\n")
     return choose_doctor
 
-  """
-  The labmenu function displays options for displaying the list of laboratory,
-  the ability to add a new laboratory, and the option to return back to the main menu.
-  """
   def LabMenu():
     choose_lab = input("Laboratory Menu\n\
     1 - Display Laboratories List\n\
@@ -341,10 +339,6 @@ class Management:
     3 - Back to the Main Menu\n")
     return choose_lab
 
-  """
-  The facilitymenu function displays options for displaying information for the list of facilities,
-  the ability to add a new facility, and the option to return back to the main menu.
-  """
   def FacilityMenu():
     choose_facility = input("Facilities Menu\n\
     1 - Display Facilities List\n\
@@ -352,11 +346,6 @@ class Management:
     3 - Back to the Main Menu\n")
     return choose_facility
 
-  """
-  The patientmenu function displays options for displaying a list of patients and their details, the
-  ability to search for a patient by their ID, to add a new patient, to edit an existing patient's details
-  and the option to return back to the main menu.
-  """
   def PatientMenu():
     choose_patient = input("Patients Menu\n\
     1 - Display Patients List\n\
@@ -366,8 +355,6 @@ class Management:
     5 - Back to main Menu\n")
     return choose_patient
 
-#The portion of code here is to only allow numerical inputs to navigate the menu.
-#Invalid options will require the user to enter a value again until it is a numerical value in range.
 choice = "x"
 while choice != "0":
   choice = Management.DisplayMenu()
