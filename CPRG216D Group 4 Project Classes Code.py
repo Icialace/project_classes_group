@@ -140,15 +140,17 @@ class Doctor:
     with open("/content/doctors.txt", mode = "a") as doctor_open:
       doctor_open.write(new_doctor_info)
 
-# Facility Class and Functions
+# Facility Class and Functions 
 class Facility:
+  # addFacility allows user to input Facility name to add facility
   def addFacility():
     added_facility = input("Enter Facility Name: ")
     added_facility =  "\n" + added_facility
     with open("/content/facilities.txt", mode = "a") as facilities_write:
       facilities_write.write(added_facility)
     print("\n")
-  
+    
+  # displayFacilities opens the txt file and prints the data in the txt file
   def displayFacilities():
     with open("/content/facilities.txt", mode = "r") as facilities_open:
       facilities_raw_data = facilities_open.readlines()
@@ -157,7 +159,8 @@ class Facility:
         facilities_list = line.split("\n")
         facilities_data.append(facilities_list)
       print(tabulate(facilities_data, headers = "firstrow"), "\n")
-  
+      
+  # writeListOfFacilitiesToFile writes a list of facilities to another file
   def writeListOfFacilitiesToFile(list_of_facilities):
     facility_write_list = []
     for line in list_of_facilities:
@@ -171,10 +174,12 @@ class Facility:
 
 # Laboratory Class and Functions
 class Laboratory:
+  # addLabToFile opens lab txt file
   def addLabToFile(new_lab_info):
     with open("/content/laboratories.txt", mode = "a") as lab_open:
       lab_open.write(new_lab_info)
   
+  # writeListOfLabsToFile writes a list of labs to another file
   def writeListOfLabsToFile(list_of_labs):
     lab_write_list = []
     for line in list_of_labs:
@@ -185,7 +190,8 @@ class Laboratory:
       lab_write.write("\n")
       for line in lab_write_list:
         lab_write.write(line)
-  
+        
+  # displayLabsList displays the the data in a formatted list
   def displayLabsList(lab_raw_data):
     lab_data = []
     for line in lab_raw_data:
@@ -193,23 +199,26 @@ class Laboratory:
       lab_data.append(lab_list)
     print(tabulate(lab_data, headers = "firstrow"), "\n")
   
+  # formatLabInfo formats a new input to prepare to write to a file
   def formatLabInfo(new_lab):
     new_lab_info = '_'.join(new_lab)
     new_lab_info = "\n" + new_lab_info
     return new_lab_info
   
+  # enterLabInfo allows a user to input data for a new lab.
   def enterLabInfo():
     new_lab = []
     new_lab.append(input("Lab name: "))
     new_lab.append("$" + input("Lab cost(e.g., for $800, enter 800): "))
     return new_lab
   
+  # readLabFile opens the txt file and reads it 
   def readLabFile():
     with open("/content/laboratories.txt", mode = "r") as lab_open:
       lab_raw_data = lab_open.readlines()
     return lab_raw_data
 
-# Patient Class and Functions
+# Patient Class and Functions 
 class Patient: 
   def formatPatientInfo(new_patient):
     new_patient_info = '_'.join(new_patient)
