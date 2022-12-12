@@ -142,7 +142,7 @@ class Doctor:
 
 # Facility Class and Functions 
 class Facility:
-  # addFacility allows user to input Facility name to add facility
+  # addFacility allows user to input Facility name to add a facility and write it to file
   def addFacility():
     added_facility = input("Enter Facility Name: ")
     added_facility =  "\n" + added_facility
@@ -150,7 +150,7 @@ class Facility:
       facilities_write.write(added_facility)
     print("\n")
     
-  # displayFacilities opens the txt file and prints the data in the txt file
+  # displayFacilities opens the txt file and displays the formatted data in the txt file as a table
   def displayFacilities():
     with open("/content/facilities.txt", mode = "r") as facilities_open:
       facilities_raw_data = facilities_open.readlines()
@@ -160,7 +160,7 @@ class Facility:
         facilities_data.append(facilities_list)
       print(tabulate(facilities_data, headers = "firstrow"), "\n")
       
-  # writeListOfFacilitiesToFile writes a list of facilities to another file
+  # writeListOfFacilitiesToFile writes a list of facilities to the file
   def writeListOfFacilitiesToFile(list_of_facilities):
     facility_write_list = []
     for line in list_of_facilities:
@@ -174,12 +174,12 @@ class Facility:
 
 # Laboratory Class and Functions
 class Laboratory:
-  # addLabToFile opens lab txt file
+  # addLabToFile opens lab txt file and adds the inputed lab to the file.
   def addLabToFile(new_lab_info):
     with open("/content/laboratories.txt", mode = "a") as lab_open:
       lab_open.write(new_lab_info)
   
-  # writeListOfLabsToFile writes a list of labs to another file
+  # writeListOfLabsToFile writes a list of labs to the file
   def writeListOfLabsToFile(list_of_labs):
     lab_write_list = []
     for line in list_of_labs:
@@ -191,7 +191,7 @@ class Laboratory:
       for line in lab_write_list:
         lab_write.write(line)
         
-  # displayLabsList displays the the data in a formatted list
+  # displayLabsList displays the formatted data in a table
   def displayLabsList(lab_raw_data):
     lab_data = []
     for line in lab_raw_data:
@@ -226,7 +226,7 @@ class Patient:
     new_patient_info = "\n" + new_patient_info
     return new_patient_info
  
-#enters patient information
+#enters a new patient's information
   def enterPatientInfo():
     new_patient = []
     new_patient.append(input("New patient's ID: "))
@@ -263,7 +263,7 @@ class Patient:
         patient_search.append("0")
     return patient_search
   
-  #displays patient information
+  #displays specific patient's information
   def displayPatientInfo(patient_search_input):
       patient_search = patient_search_input[0].strip('\n').split(':'), patient_search_input[1].strip('\n').split(':')
       if patient_search_input[1] == "0":
@@ -271,7 +271,7 @@ class Patient:
       else:
         print(tabulate(patient_search, headers = 'firstrow'), "\n")
   
-  #edits patient information
+  #edits an existing patient's information
   def editPatientInfo():
     edit_patient = []
     edit_patient_id = input("Enter the ID of the patient who's information you would like to edit: ")
@@ -295,7 +295,7 @@ class Patient:
       for line in patient_list:
         patient_write.write(line)
   
-  #displays patient list
+  #displays formatted patient data as a table
   def displayPatientsList(patient_raw_data):
     patient_data = []
     for line in patient_raw_data:
@@ -303,7 +303,7 @@ class Patient:
       patient_data.append(patient_list)
     print(tabulate(patient_data, headers = "firstrow"), "\n")
   
-  #writes patient information to a file
+  #writes a list of patient data to the file
   def writeListOfPatientsToFile(list_of_patients):
     patient_write_list = []
     for line in list_of_patients:
@@ -315,6 +315,7 @@ class Patient:
       for line in patient_write_list:
         patient_write.write(line)
   
+  #add a new patient's information to the file
   def addPatienttoFile(new_patient_info):
     with open("/content/patients.txt", mode = "a") as patient_open:
       patient_open.write(new_patient_info)
