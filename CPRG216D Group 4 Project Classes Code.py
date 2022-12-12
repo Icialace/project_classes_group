@@ -218,13 +218,15 @@ class Laboratory:
       lab_raw_data = lab_open.readlines()
     return lab_raw_data
 
-# Patient Class and Functions 
-class Patient: 
+# Patient Class and Functions
+class Patient:
+  #formats new patient info to prepare to write to file
   def formatPatientInfo(new_patient):
     new_patient_info = '_'.join(new_patient)
     new_patient_info = "\n" + new_patient_info
     return new_patient_info
-  
+ 
+#enters patient information
   def enterPatientInfo():
     new_patient = []
     new_patient.append(input("New patient's ID: "))
@@ -234,11 +236,13 @@ class Patient:
     new_patient.append(input("New patient's age: "))
     return new_patient
   
+  #reads patient file
   def readPatientsFile():
     with open("/content/patients.txt", mode = "r") as patient_open:
       patient_raw_data = patient_open.readlines()
     return patient_raw_data
   
+  #searches for a patient by the ID
   def SearchPatientByID(patient_raw_data):
     patient_id = input("Enter patient's ID: ")
     patient_id = patient_id + ":"
@@ -259,6 +263,7 @@ class Patient:
         patient_search.append("0")
     return patient_search
   
+  #displays patient information
   def displayPatientInfo(patient_search_input):
       patient_search = patient_search_input[0].strip('\n').split(':'), patient_search_input[1].strip('\n').split(':')
       if patient_search_input[1] == "0":
@@ -266,6 +271,7 @@ class Patient:
       else:
         print(tabulate(patient_search, headers = 'firstrow'), "\n")
   
+  #edits patient information
   def editPatientInfo():
     edit_patient = []
     edit_patient_id = input("Enter the ID of the patient who's information you would like to edit: ")
@@ -289,6 +295,7 @@ class Patient:
       for line in patient_list:
         patient_write.write(line)
   
+  #displays patient list
   def displayPatientsList(patient_raw_data):
     patient_data = []
     for line in patient_raw_data:
@@ -296,6 +303,7 @@ class Patient:
       patient_data.append(patient_list)
     print(tabulate(patient_data, headers = "firstrow"), "\n")
   
+  #writes patient information to a file
   def writeListOfPatientsToFile(list_of_patients):
     patient_write_list = []
     for line in list_of_patients:
@@ -375,8 +383,6 @@ class Management:
     5 - Back to main Menu\n")
     return choose_patient
 
-#The portion of code here is to only allow numerical inputs to navigate the menu.
-#Invalid options will require the user to enter a value again until it is a numerical value in range.
 choice = "x"
 while choice != "0":
   choice = Management.DisplayMenu()
