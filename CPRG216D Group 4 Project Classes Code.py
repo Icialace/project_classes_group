@@ -218,8 +218,9 @@ class Laboratory:
       lab_raw_data = lab_open.readlines()
     return lab_raw_data
 
-# Patient Class and Functions 
-class Patient: 
+# Patient Class and Functions
+class Patient:
+  #formats new patient info to prepare to write to file
   def formatPatientInfo(new_patient):
     new_patient_info = '_'.join(new_patient)
     new_patient_info = "\n" + new_patient_info
@@ -270,7 +271,7 @@ class Patient:
       else:
         print(tabulate(patient_search, headers = 'firstrow'), "\n")
   
-  #edits patient information 
+  #edits patient information
   def editPatientInfo():
     edit_patient = []
     edit_patient_id = input("Enter the ID of the patient who's information you would like to edit: ")
